@@ -1,0 +1,596 @@
+/* PAGINA PERSONAGENS - ESTILO CYBERPUNK */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --neon-pink: #F000AC;
+    --neon-blue: #0112FE;
+    --neon-cyan: #00fff6;
+    --neon-purple: #c22bff;
+    --neon-green: #66bf01;
+    --neon-teal: #00b5b8;
+    --neon-orange: #ff6b00;
+    --dark-bg: #150A23;
+    --container-bg: #1B0936;
+    --glitch-color1: #ff006e;
+    --glitch-color2: #00fff6;
+    --glitch-color3: #c22bff;
+}
+
+body {
+    margin: 0;
+    font-family: 'Pixelify Sans', sans-serif;
+    background-color: var(--dark-bg);
+    color: white;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Efeito de fundo cyberpunk */
+.cyberpunk-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        linear-gradient(45deg, transparent 49%, var(--neon-pink) 49%, var(--neon-pink) 51%, transparent 51%) 0 0/50px 50px,
+        linear-gradient(-45deg, transparent 49%, rgba(240, 0, 172, 0.1) 49%, rgba(240, 0, 172, 0.1) 51%, transparent 51%) 0 0/50px 50px;
+    z-index: -1;
+    animation: gridMove 20s linear infinite;
+}
+
+@keyframes gridMove {
+    0% { background-position: 0 0, 0 0; }
+    100% { background-position: 50px 50px, 50px 50px; }
+}
+
+/* Container principal */
+.container {
+    background-color: var(--container-bg);
+    border: 0.4vw solid var(--neon-purple);
+    width: 95%;
+    max-width: 1400px;
+    margin: 2% auto;
+    position: relative;
+    border-radius: 2vw;
+    box-shadow: 
+        0 0 20px var(--neon-purple),
+        inset 0 0 20px rgba(194, 43, 255, 0.1);
+    overflow: hidden;
+}
+
+/* Header */
+.header {
+    position: relative;
+    padding: 1vw 2vw;
+    background: linear-gradient(180deg, rgba(194, 43, 255, 0.3) 0%, transparent 100%);
+    border-bottom: 2px solid var(--neon-purple);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1vw;
+}
+
+.titulo p {
+    font-size: clamp(2rem, 4vw, 4rem);
+    text-align: left;
+    position: relative;
+    z-index: 1;
+    text-shadow: 
+        0 0 10px var(--neon-purple),
+        0 0 20px var(--neon-purple),
+        0 0 30px var(--neon-purple);
+}
+
+.logo img {
+    width: clamp(60px, 8vw, 100px);
+    height: auto;
+    filter: drop-shadow(0 0 10px var(--neon-cyan));
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Navegação - Pastas */
+.pasta {
+    display: flex;
+    justify-content: center;
+    gap: clamp(1rem, 2vw, 2rem);
+    flex-wrap: wrap;
+    margin: 1rem 0;
+}
+
+.pasta-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: clamp(70px, 8vw, 100px);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.pasta-icon:hover {
+    transform: translateY(-5px) scale(1.1);
+}
+
+.pasta-icon img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 0 5px var(--neon-blue));
+    transition: all 0.3s ease;
+}
+
+.pasta-icon:hover img {
+    filter: drop-shadow(0 0 15px var(--neon-cyan));
+}
+
+.pasta-icon p {
+    font-size: clamp(0.8rem, 1.2vw, 1.2rem);
+    text-align: center;
+    margin-top: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.pasta-icon a {
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Efeitos de texto neon e glitch */
+.neon-text {
+    color: white;
+    text-shadow: 
+        0 0 5px currentColor,
+        0 0 10px currentColor,
+        0 0 15px currentColor;
+    transition: all 0.3s ease;
+}
+
+.pasta-icon:hover .neon-text {
+    color: var(--neon-cyan);
+    text-shadow: 
+        0 0 10px var(--neon-cyan),
+        0 0 20px var(--neon-cyan),
+        0 0 30px var(--neon-cyan);
+}
+
+.glitch-text {
+    position: relative;
+    display: inline-block;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.glitch-text::before {
+    animation: glitch-1 0.5s infinite linear alternate-reverse;
+    color: var(--glitch-color1);
+    z-index: -1;
+}
+
+.glitch-text::after {
+    animation: glitch-2 0.5s infinite linear alternate-reverse;
+    color: var(--glitch-color2);
+    z-index: -2;
+}
+
+@keyframes glitch-1 {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    100% { transform: translate(0); }
+}
+
+@keyframes glitch-2 {
+    0% { transform: translate(0); }
+    20% { transform: translate(2px, -2px); }
+    40% { transform: translate(2px, 2px); }
+    60% { transform: translate(-2px, -2px); }
+    80% { transform: translate(-2px, 2px); }
+    100% { transform: translate(0); }
+}
+
+/* Caixas neon */
+.neon-box {
+    border: 0.3vw solid;
+    padding: clamp(1rem, 2vw, 2rem);
+    border-radius: 1.5vw;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+}
+
+.neon-box::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, transparent, transparent, currentColor, transparent, transparent);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.neon-box:hover::before {
+    opacity: 1;
+    animation: borderGlow 2s linear infinite;
+}
+
+@keyframes borderGlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.neon-box:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 
+        0 0 20px currentColor,
+        0 0 40px currentColor,
+        inset 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+/* Layout principal */
+.main-content {
+    padding: 2vw;
+}
+
+/* Seção Kanshi */
+.section-kanshi {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin: 2vw 0;
+}
+
+.caixa-kanshi {
+    border-color: var(--neon-purple);
+    color: var(--neon-purple);
+    text-align: center;
+}
+
+.caixa-kanshi p {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    text-align: center;
+    line-height: 1.2;
+}
+
+/* Personagem em Destaque */
+.personagem-destaque {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2vw;
+    margin: 3vw 0;
+    align-items: start;
+}
+
+.personagem-imagem-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+}
+
+.personagem-imagem {
+    border-color: var(--neon-cyan);
+    padding: 1vw;
+    text-align: center;
+    height: 60vh;
+    width: 95%;
+    margin-left: 2%;
+    margin-top: .3%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.personagem-imagem img {
+    width: 120%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 1vw;
+    filter: drop-shadow(0 0 10px var(--neon-cyan));
+}
+
+.personagem-info-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+}
+
+.personagem-nome {
+    border-color: var(--neon-pink);
+    color: var(--neon-pink);
+    text-align: center;
+    margin-left: .5%;
+    margin-top: .2%;
+}
+
+.personagem-nome h2 {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    margin: 0;
+    text-shadow: 
+        0 0 10px var(--neon-pink),
+        0 0 20px var(--neon-pink);
+}
+
+.personagem-descricao {
+    border-color: var(--neon-blue);
+    color: var(--neon-blue);
+    flex-grow: 1;
+    margin-left: -2%;
+}
+
+.personagem-descricao p {
+    font-size: clamp(1rem, 1.2vw, 1.1rem);
+    line-height: 1.6;
+    text-align: left;
+    color: #ccc;
+}
+
+.personagem-atributos {
+    border-color: var(--neon-green);
+    color: var(--neon-green);
+}
+
+.personagem-atributos h3 {
+    font-size: clamp(1.2rem, 2vw, 1.8rem);
+    text-align: center;
+    margin-bottom: 1rem;
+    text-shadow: 
+        0 0 10px var(--neon-green),
+        0 0 20px var(--neon-green);
+}
+
+.atributos-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+}
+
+.atributo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background: rgba(102, 191, 1, 0.1);
+    border-radius: 0.5rem;
+    border: 1px solid var(--neon-green);
+}
+
+.atributo-nome {
+    font-weight: bold;
+    color: var(--neon-green);
+    font-size: clamp(0.9rem, 1.1vw, 1.1rem);
+}
+
+.atributo-valor {
+    color: #ccc;
+    font-size: clamp(0.9rem, 1.1vw, 1.1rem);
+    text-align: right;
+}
+
+/* Catálogo de Personagens */
+.catalogo-section {
+    margin: 4vw 0;
+    text-align: center;
+}
+
+.titulo-catalogo p {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    margin: 2vw 0;
+    text-shadow: 
+        0 0 10px var(--neon-orange),
+        0 0 20px var(--neon-orange);
+}
+
+.botoes-personagens {
+    display: flex;
+    justify-content: center;
+    gap: 1vw;
+    flex-wrap: wrap;
+    margin: 2vw 0;
+}
+
+.btn-personagem {
+    padding: 1vw 2vw;
+    border: 0.2vw solid var(--neon-orange);
+    background: transparent;
+    color: var(--neon-orange);
+    border-radius: 1vw;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Pixelify Sans', sans-serif;
+    font-size: clamp(0.9rem, 1.2vw, 1.2rem);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-personagem::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 107, 0, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn-personagem:hover::before {
+    left: 100%;
+}
+
+.btn-personagem:hover {
+    background: var(--neon-orange);
+    color: var(--dark-bg);
+    transform: translateY(-3px);
+    box-shadow: 
+        0 0 20px var(--neon-orange),
+        0 0 40px var(--neon-orange);
+}
+
+.btn-personagem.ativo {
+    background: var(--neon-orange);
+    color: var(--dark-bg);
+    box-shadow: 
+        0 0 15px var(--neon-orange),
+        0 0 30px var(--neon-orange);
+}
+
+.controles-navegacao {
+    display: flex;
+    justify-content: center;
+    gap: 2vw;
+    margin-top: 2vw;
+}
+
+.btn-controle {
+    padding: 1vw 2vw;
+    border: 0.2vw solid var(--neon-teal);
+    background: transparent;
+    color: var(--neon-teal);
+    border-radius: 1vw;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Pixelify Sans', sans-serif;
+    font-size: clamp(0.9rem, 1.2vw, 1.2rem);
+}
+
+.btn-controle:hover {
+    background: var(--neon-teal);
+    color: var(--dark-bg);
+    transform: translateY(-3px);
+    box-shadow: 
+        0 0 20px var(--neon-teal),
+        0 0 40px var(--neon-teal);
+}
+
+.btn-controle:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.btn-controle:disabled:hover {
+    background: transparent;
+    color: var(--neon-teal);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .container {
+        width: 98%;
+        margin: 1% auto;
+        border-width: 0.6vw;
+        border-radius: 3vw;
+    }
+
+    .header {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .personagem-destaque {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .personagem-imagem {
+        height: 300px;
+    }
+
+    .botoes-personagens {
+        gap: 0.5rem;
+    }
+
+    .btn-personagem {
+        padding: 0.8rem 1.2rem;
+        font-size: 0.9rem;
+    }
+
+    .controles-navegacao {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .btn-controle {
+        width: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .pasta {
+        gap: 0.3rem;
+    }
+
+    .pasta-icon {
+        width: 50px;
+    }
+
+    .pasta-icon p {
+        font-size: 0.7rem;
+    }
+
+    .personagem-imagem {
+        height: 250px;
+    }
+
+    .atributo {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.3rem;
+    }
+
+    .atributo-valor {
+        text-align: left;
+    }
+}
+
+/* Melhorias de acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+    .glitch-text::before,
+    .glitch-text::after,
+    .cyberpunk-bg,
+    .logo img,
+    .neon-box::before,
+    .btn-personagem::before {
+        animation: none;
+    }
+}
+
+/* Focus visible para acessibilidade */
+.pasta-icon a:focus-visible,
+.neon-box:focus-visible,
+.btn-personagem:focus-visible,
+.btn-controle:focus-visible {
+    outline: 2px solid var(--neon-cyan);
+    outline-offset: 2px;
+}

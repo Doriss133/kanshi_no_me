@@ -1,0 +1,543 @@
+/* PAGINA 1 - SOBRE O JOGO - VERSÃO CYBERPUNK RESPONSIVA */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --neon-pink: #F000AC;
+    --neon-blue: #0112FE;
+    --neon-cyan: #00fff6;
+    --neon-purple: #c22bff;
+    --neon-green: #66bf01;
+    --neon-teal: #00b5b8;
+    --dark-bg: #150A23;
+    --container-bg: #1B0936;
+    --glitch-color1: #ff006e;
+    --glitch-color2: #00fff6;
+    --glitch-color3: #c22bff;
+}
+
+body {
+    margin: 0;
+    font-family: 'Pixelify Sans', sans-serif;
+    background-color: var(--dark-bg);
+    color: white;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Efeito de fundo cyberpunk */
+.cyberpunk-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        linear-gradient(45deg, transparent 49%, var(--neon-pink) 49%, var(--neon-pink) 51%, transparent 51%) 0 0/50px 50px,
+        linear-gradient(-45deg, transparent 49%, rgba(240, 0, 172, 0.1) 49%, rgba(240, 0, 172, 0.1) 51%, transparent 51%) 0 0/50px 50px;
+    z-index: -1;
+    animation: gridMove 20s linear infinite;
+}
+
+@keyframes gridMove {
+    0% { background-position: 0 0, 0 0; }
+    100% { background-position: 50px 50px, 50px 50px; }
+}
+
+/* Container principal */
+.container {
+    background-color: var(--container-bg);
+    border: 0.4vw solid var(--neon-cyan);
+    width: 95%;
+    max-width: 1400px;
+    margin: 2% auto;
+    position: relative;
+    border-radius: 2vw;
+    box-shadow: 
+        0 0 20px var(--neon-cyan),
+        inset 0 0 20px rgba(240, 0, 172, 0.1);
+    overflow: hidden;
+}
+
+/* Header */
+.header {
+    position: relative;
+    padding: 1vw 2vw;
+    background: linear-gradient(180deg, rgba(240, 0, 172, 0.3) 0%, transparent 100%);
+    border-bottom: 2px solid var(--neon-cyan);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1vw;
+}
+
+.titulo p {
+    font-size: clamp(2rem, 4vw, 4rem);
+    text-align: left;
+    position: relative;
+    z-index: 1;
+    text-shadow: 
+        0 0 10px var(--neon-pink),
+        0 0 20px var(--neon-cyan),
+        0 0 30px var(--neon-cyan);
+}
+
+.logo img {
+    width: clamp(60px, 8vw, 100px);
+    height: auto;
+    filter: drop-shadow(0 0 10px var(--neon-cyan));
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Navegação - Pastas */
+.pasta {
+    display: flex;
+    justify-content: center;
+    gap: clamp(1rem, 2vw, 2rem);
+    flex-wrap: wrap;
+    margin: 1rem 0;
+}
+
+.pasta-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: clamp(70px, 8vw, 100px);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.pasta-icon:hover {
+    transform: translateY(-5px) scale(1.1);
+}
+
+.pasta-icon img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 0 5px var(--neon-blue));
+    transition: all 0.3s ease;
+}
+
+.pasta-icon:hover img {
+    filter: drop-shadow(0 0 15px var(--neon-cyan));
+}
+
+.pasta-icon p {
+    font-size: clamp(0.8rem, 1.2vw, 1.2rem);
+    text-align: center;
+    margin-top: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.pasta-icon a {
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Efeitos de texto neon e glitch */
+.neon-text {
+    color: white;
+    text-shadow: 
+        0 0 5px currentColor,
+        0 0 10px currentColor,
+        0 0 15px currentColor;
+    transition: all 0.3s ease;
+}
+
+.pasta-icon:hover .neon-text {
+    color: var(--neon-cyan);
+    text-shadow: 
+        0 0 10px var(--neon-cyan),
+        0 0 20px var(--neon-cyan),
+        0 0 30px var(--neon-cyan);
+}
+
+.glitch-text {
+    position: relative;
+    display: inline-block;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.glitch-text::before {
+    animation: glitch-1 0.5s infinite linear alternate-reverse;
+    color: var(--glitch-color1);
+    z-index: -1;
+}
+
+.glitch-text::after {
+    animation: glitch-2 0.5s infinite linear alternate-reverse;
+    color: var(--glitch-color2);
+    z-index: -2;
+}
+
+@keyframes glitch-1 {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    100% { transform: translate(0); }
+}
+
+@keyframes glitch-2 {
+    0% { transform: translate(0); }
+    20% { transform: translate(2px, -2px); }
+    40% { transform: translate(2px, 2px); }
+    60% { transform: translate(-2px, -2px); }
+    80% { transform: translate(-2px, 2px); }
+    100% { transform: translate(0); }
+}
+
+/* Caixas neon */
+.neon-box {
+    border: 0.3vw solid;
+    padding: clamp(1rem, 2vw, 2rem);
+    border-radius: 1.5vw;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+}
+
+.neon-box::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, transparent, transparent, currentColor, transparent, transparent);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.neon-box:hover::before {
+    opacity: 1;
+    animation: borderGlow 2s linear infinite;
+}
+
+@keyframes borderGlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.neon-box:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 
+        0 0 20px currentColor,
+        0 0 40px currentColor,
+        inset 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+/* Layout responsivo das seções */
+.main-content {
+    padding: 2vw;
+}
+
+/* Layout responsivo das seções */
+.section-grid,
+.section-grid.reverse {
+    display: flex;
+    flex-direction: column;
+    gap: 0vw; /* reduzido para eliminar o espaço entre os blocos */
+    margin: 4vw 0;
+    align-items: stretch;
+}
+
+/* Cores específicas para cada seção */
+.caixa-kanshi, .caixa-texto-explicativa {
+    border-color: var(--neon-blue);
+    color: var(--neon-blue);
+}
+
+.rpg-turno, .rpg-turno-explicacao {
+    border-color: var(--neon-pink);
+    color: var(--neon-pink);
+}
+
+.titulo-problematica, .caixa-problematica {
+    border-color: var(--neon-cyan);
+    color: var(--neon-cyan);
+}
+
+.sinopse-titulo, .sinopse {
+    border-color: var(--neon-purple);
+    color: var(--neon-purple);
+}
+
+.historia-titulo, .historia {
+    border-color: var(--neon-green);
+    color: var(--neon-green);
+}
+
+.escolha-final, .escolha-finaltexto {
+    border-color: #312783;
+    color: #312783;
+}
+
+.objetivo-jogador2, .objetivo-jogadortexto {
+    border-color: var(--neon-teal);
+    color: var(--neon-teal);
+}
+
+/* Tipografia responsiva */
+.caixa-kanshi p {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    text-align: center;
+    line-height: 1.2;
+}
+
+.caixa-texto-explicativa p,
+.rpg-turno-explicacao p,
+.caixa-problematica p,
+.sinopse p,
+.historia p,
+.escolha-finaltexto p,
+.objetivo-jogadortexto p {
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    line-height: 1.6;
+    text-align: left;
+}
+
+.rpg-turno p,
+.titulo-problematica p,
+.sinopse-titulo p,
+.historia-titulo p,
+.escolha-final p,
+.objetivo-jogador2 p {
+    font-size: clamp(1.2rem, 2.5vw, 2rem);
+    text-align: center;
+}
+
+/* Seção do trailer */
+.trailer-section {
+    text-align: center;
+    margin: 4vw 0;
+}
+
+.titulo-trailer p {
+    font-size: clamp(3.2rem, 6vw, 5.5rem);
+    z-index: 2;
+    margin: 2vw 0;
+     margin-top: 10%;
+}
+
+.borda-trailer {
+    position: relative;
+    width: 90%;
+    max-width: 900px;
+    margin: 0 auto;
+    right: 5%;
+    margin-top: -27%;
+}
+
+.borda-trailer img {
+    width: 110%;
+    height: auto;
+    display: block;
+    z-index: .2;
+}
+
+.video-cidade {
+    position: absolute;
+    top: 33%;
+    left: 10%;
+    width: 92%;
+    height: 31%;
+    object-fit: cover;
+    border-radius: 1vw;
+}
+
+/* Seções especiais */
+.spoiler-section,
+.historia-section,
+.objetivo-section {
+    margin: 4vw 0;
+}
+
+.curte-spoilerleve p,
+.titulo-nemtudo p,
+.objetivo-jogador p {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    text-align: center;
+    margin: 2vw 0;
+    text-shadow: 
+        0 0 10px var(--neon-cyan),
+        0 0 20px var(--neon-cyan);
+}
+
+.sinopse-container,
+.historia-container,
+.objetivo-container {
+    margin: 2vw 0;
+}
+
+
+@keyframes glitchFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    33% { transform: translateY(-10px) rotate(2deg); }
+    66% { transform: translateY(5px) rotate(-2deg); }
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Media Queries para Responsividade */
+@media (max-width: 768px) {
+    .container {
+        width: 98%;
+        margin: 1% auto;
+        border-width: 0.6vw;
+        border-radius: 3vw;
+    }
+
+    .header {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .section-grid,
+    .section-grid.reverse {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .pasta {
+        gap: 0.4rem;
+    }
+
+    .pasta-icon {
+        width: 68px;
+    }
+    
+
+     .neon-box {
+        padding: 4vw; /* RESPONSIVO */
+        border-width: 0.5vw; /* RESPONSIVO */
+        border-radius: 3vw; /* RESPONSIVO */
+    }
+
+    .borda-trailer {
+        width: 95%;
+    }
+
+    .gravar-glitch,
+    .decoracao-letra {
+        display: none; /* Esconde elementos decorativos em mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    
+    .pasta-icon p {
+        font-size: 0.6rem;
+    }
+
+    .neon-box {
+        padding: 0.8rem;
+    }
+
+    .caixa-texto-explicativa p,
+    .rpg-turno-explicacao p,
+    .caixa-problematica p,
+    .sinopse p,
+    .historia p,
+    .escolha-finaltexto p,
+    .objetivo-jogadortexto p {
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+}
+
+/* Melhorias de acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+    .glitch-text::before,
+    .glitch-text::after,
+    .cyberpunk-bg,
+    .logo img,
+    .gravar-glitch,
+    .decoracao-letra,
+    .neon-box::before {
+        animation: none;
+    }
+}
+
+/* Focus visible para acessibilidade */
+.pasta-icon a:focus-visible,
+.neon-box:focus-visible {
+    outline: 2px solid var(--neon-cyan);
+    outline-offset: 2px;
+}
+
+/*TESTE PARA A CAIXA DE KANSHI NO ME NO INICIO*/
+/* Seção especial: Kanshi no Me */
+.section-kanshi {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  margin: 4vw 0;
+}
+
+.caixa-kanshi-completa {
+  display: flex;
+  flex-direction: column;
+  padding: 2vw;
+  border: 0.3vw solid var(--neon-blue); /* aplica cor azul como as outras */
+  border-radius: 1.5vw;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  color: var(--neon-blue);
+}
+
+.titulo-kanshi {
+  font-size: clamp(2rem, 4vw, 3rem);
+  text-align: left;
+  margin-bottom: 0;
+  color: var(--neon-blue);
+}
+
+.texto-kanshi {
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  line-height: 1.6;
+  text-align: left;
+  margin-top: 0;
+  color: #ccc;
+}
+
+/*TESTE PARA A PARTE DA CAIXA RPG DE ATAQUE*/
+/* Ajuste para eliminar espaço antes da seção RPG de Ataque */
+.rpg-turno {
+  margin-top: -30%;
+  padding-top: 0;
+}
+
+.section-grid.reverse {
+  margin-top: 1vw; /* ou menos, se quiser mais colado */
+}

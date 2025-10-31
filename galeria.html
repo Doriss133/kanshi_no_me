@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="galeria.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=Questrial&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap" rel="stylesheet">
+    <title>Kanshi no Me - Galeria</title>
+     <link rel="icon" href="imagens/logo.png" type="image/png">
+</head>
+<body>
+    <div class="cyberpunk-bg"></div>
+    
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <img src="imagens/logo.png" alt="logo Kanshi no Me">
+            </div>
+            <div class="titulo">
+                <p class="glitch-text" data-text="kanshi no me">kanshi no me</p>
+            </div>
+            
+            <nav class="pasta">
+                <div class="pasta-icon">
+                    <a href="sobre.html">
+                        <img src="imagens/pasta2-icon.png" alt="Sobre">
+                        <p class="neon-text">sobre</p>
+                    </a>
+                </div>
+                <div class="pasta-icon">
+                    <a href="tutorial.html">
+                        <img src="imagens/pasta2-icon.png" alt="Tutorial">
+                        <p class="neon-text">tutorial</p>
+                    </a>
+                </div>
+                <div class="pasta-icon">
+                    <a href="personagem.html">
+                        <img src="imagens/pasta2-icon.png" alt="Personagens">
+                        <p class="neon-text">personagens</p>
+                    </a>
+                </div>
+                <div class="pasta-icon">
+                    <img src="imagens/pasta2-icon.png" alt="Galeria">
+                    <p class="neon-text">galeria</p>
+                </div>
+                <div class="pasta-icon">
+                    <a href="creditos.html">
+                        <img src="imagens/pasta2-icon.png" alt="Créditos">
+                        <p class="neon-text">créditos</p>
+                    </a>
+                </div>
+                <div class="pasta-icon">
+                    <a href="index.html">
+                        <img src="imagens/pasta2-icon.png" alt="Início">
+                        <p class="neon-text">início</p>
+                    </a>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Conteúdo Principal -->
+        <main class="main-content">
+            <!-- Título Principal -->
+            <section class="section-kanshi">
+                <div class="caixa-kanshi neon-box">
+                    <p>GALERIA DE IMAGENS</p>
+                </div>
+            </section>
+
+            <!-- Grid de Galeria -->
+            <section class="galeria-section">
+                <div class="titulo-galeria">
+                    <p class="glitch-text" data-text="EXPLORE O UNIVERSO">EXPLORE O UNIVERSO</p>
+                </div>
+
+                <div class="grid-galeria">
+                    <!-- Linha 1 -->
+                    <div class="item-galeria" data-imagem="1">
+                        <img src="imagens/imagem1.gif" alt="Imagem 1">
+                        <div class="overlay">
+                            <span class="expand-icon">+</span>
+                        </div>
+                    </div>
+                    <div class="item-galeria" data-imagem="2">
+                        <img src="imagens/imagem2.gif" alt="Imagem 2">
+                        <div class="overlay">
+                            <span class="expand-icon">+</span>
+                        </div>
+                    </div>
+                    <div class="item-galeria" data-imagem="3">
+                        <img src="imagens/imagem3.gif" alt="Imagem 3">
+                        <div class="overlay">
+                            <span class="expand-icon">+</span>
+                        </div>
+                    </div>
+
+                    <!-- Linha 2 -->
+                    <div class="item-galeria" data-imagem="4">
+                        <img src="imagens/imagem4.gif" alt="Imagem 4">
+                        <div class="overlay">
+                            <span class="expand-icon">+</span>
+                        </div>
+                    </div>
+                    <div class="item-galeria" data-imagem="5">
+                        <img src="imagens/imagem5.gif" alt="Imagem 5">
+                        <div class="overlay">
+                            <span class="expand-icon">+</span>
+                        </div>
+                    </div>
+                    <div class="item-galeria" data-imagem="6">
+                        <img src="imagens/imagem6.gif" alt="Imagem 6">
+                        <div class="overlay">
+                            <span class="expand-icon">+</span>
+                        </div>
+                    </div>
+
+                    <!-- Linha 3 -->
+                    <div class="item-galeria" data-imagem="7">
+                        <img src="imagens/imagem7.gif" alt="Imagem 7">
+                        <div class="overlay">
+                            <span class="expand-icon">+</span>
+                        </div>
+                    </div>
+                    <div class="item-galeria" data-imagem="8">
+                        <img src="imagens/imagem8.gif" alt="Imagem 8">
+                        <div class="overlay">
+                            <span class="expand-icon">+</span>
+                        </div>
+                    </div>
+                    <div class="item-galeria" data-imagem="9">
+                        <img src="imagens/imagem9.gif" alt="Imagem 9">
+                        <div class="overlay">
+                            <span class="expand-icon">+</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal para imagem ampliada -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <img id="modal-imagem" src="" alt="Imagem ampliada">
+            <div class="modal-navigation">
+                <button class="nav-btn prev-btn">‹</button>
+                <span class="image-counter">1 / 9</span>
+                <button class="nav-btn next-btn">›</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Áudio para efeito de click -->
+    <audio id="click-sound" preload="auto">
+        <source src="" type="audio/mpeg">
+    </audio>
+
+    <script src="galeria.js"></script>
+</body>
+</html>

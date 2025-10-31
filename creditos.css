@@ -1,0 +1,486 @@
+/* PAGINA CRÉDITOS - ESTILO CYBERPUNK VERDE */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --neon-pink: #F000AC;
+    --neon-blue: #0112FE;
+    --neon-cyan: #00fff6;
+    --neon-purple: #c22bff;
+    --neon-green: #66bf01;
+    --neon-teal: #00b5b8;
+    --neon-orange: #ff6b00;
+    --dark-bg: #150A23;
+    --container-bg: #1B0936;
+    --glitch-color1: #ff006e;
+    --glitch-color2: #00fff6;
+    --glitch-color3: #c22bff;
+}
+
+body {
+    margin: 0;
+    font-family: 'Pixelify Sans', sans-serif;
+    background-color: var(--dark-bg);
+    color: white;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Efeito de fundo cyberpunk */
+.cyberpunk-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        linear-gradient(45deg, transparent 49%, var(--neon-green) 49%, var(--neon-green) 51%, transparent 51%) 0 0/50px 50px,
+        linear-gradient(-45deg, transparent 49%, rgba(102, 191, 1, 0.1) 49%, rgba(102, 191, 1, 0.1) 51%, transparent 51%) 0 0/50px 50px;
+    z-index: -1;
+    animation: gridMove 20s linear infinite;
+}
+
+@keyframes gridMove {
+    0% { background-position: 0 0, 0 0; }
+    100% { background-position: 50px 50px, 50px 50px; }
+}
+
+/* Container principal */
+.container {
+    background-color: var(--container-bg);
+    border: 0.4vw solid var(--neon-green);
+    width: 95%;
+    max-width: 1400px;
+    margin: 2% auto;
+    position: relative;
+    border-radius: 2vw;
+    box-shadow: 
+        0 0 20px var(--neon-green),
+        inset 0 0 20px rgba(102, 191, 1, 0.1);
+    overflow: hidden;
+}
+
+/* Header */
+.header {
+    position: relative;
+    padding: 1vw 2vw;
+    background: linear-gradient(180deg, rgba(102, 191, 1, 0.3) 0%, transparent 100%);
+    border-bottom: 2px solid var(--neon-green);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1vw;
+}
+
+.titulo p {
+    font-size: clamp(2rem, 4vw, 4rem);
+    text-align: left;
+    position: relative;
+    z-index: 1;
+    text-shadow: 
+        0 0 10px var(--neon-green),
+        0 0 20px var(--neon-green),
+        0 0 30px var(--neon-green);
+}
+
+.logo img {
+    width: clamp(60px, 8vw, 100px);
+    height: auto;
+    filter: drop-shadow(0 0 10px var(--neon-cyan));
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Navegação - Pastas */
+.pasta {
+    display: flex;
+    justify-content: center;
+    gap: clamp(1rem, 2vw, 2rem);
+    flex-wrap: wrap;
+    margin: 1rem 0;
+}
+
+.pasta-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: clamp(70px, 8vw, 100px);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.pasta-icon:hover {
+    transform: translateY(-5px) scale(1.1);
+}
+
+.pasta-icon img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 0 5px var(--neon-blue));
+    transition: all 0.3s ease;
+}
+
+.pasta-icon:hover img {
+    filter: drop-shadow(0 0 15px var(--neon-cyan));
+}
+
+.pasta-icon p {
+    font-size: clamp(0.8rem, 1.2vw, 1.2rem);
+    text-align: center;
+    margin-top: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.pasta-icon a {
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Efeitos de texto neon e glitch */
+.neon-text {
+    color: white;
+    text-shadow: 
+        0 0 5px currentColor,
+        0 0 10px currentColor,
+        0 0 15px currentColor;
+    transition: all 0.3s ease;
+}
+
+.pasta-icon:hover .neon-text {
+    color: var(--neon-cyan);
+    text-shadow: 
+        0 0 10px var(--neon-cyan),
+        0 0 20px var(--neon-cyan),
+        0 0 30px var(--neon-cyan);
+}
+
+.glitch-text {
+    position: relative;
+    display: inline-block;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.glitch-text::before {
+    animation: glitch-1 0.5s infinite linear alternate-reverse;
+    color: var(--glitch-color1);
+    z-index: -1;
+}
+
+.glitch-text::after {
+    animation: glitch-2 0.5s infinite linear alternate-reverse;
+    color: var(--glitch-color2);
+    z-index: -2;
+}
+
+@keyframes glitch-1 {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    100% { transform: translate(0); }
+}
+
+@keyframes glitch-2 {
+    0% { transform: translate(0); }
+    20% { transform: translate(2px, -2px); }
+    40% { transform: translate(2px, 2px); }
+    60% { transform: translate(-2px, -2px); }
+    80% { transform: translate(-2px, 2px); }
+    100% { transform: translate(0); }
+}
+
+/* Caixas neon */
+.neon-box {
+    border: 0.3vw solid;
+    padding: clamp(1rem, 2vw, 2rem);
+    border-radius: 1.5vw;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+}
+
+.neon-box::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, transparent, transparent, currentColor, transparent, transparent);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.neon-box:hover::before {
+    opacity: 1;
+    animation: borderGlow 2s linear infinite;
+}
+
+@keyframes borderGlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.neon-box:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 
+        0 0 20px currentColor,
+        0 0 40px currentColor,
+        inset 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+/* Layout principal */
+.main-content {
+    padding: 2vw;
+}
+
+/* Seção Kanshi */
+.section-kanshi {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin: 2vw 0;
+}
+
+.caixa-kanshi {
+    border-color: var(--neon-green);
+    color: var(--neon-green);
+    text-align: center;
+}
+
+.caixa-kanshi p {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    text-align: center;
+    line-height: 1.2;
+}
+
+/* Seção Créditos */
+.creditos-section {
+    margin: 3vw 0;
+}
+
+.creditos-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+}
+
+/* Cores específicas para cada caixa de créditos */
+.creditos-equipe {
+    border-color: var(--neon-green);
+    color: var(--neon-green);
+}
+
+.creditos-historia {
+    border-color: var(--neon-cyan);
+    color: var(--neon-cyan);
+}
+
+.creditos-colaboracao {
+    border-color: var(--neon-blue);
+    color: var(--neon-blue);
+}
+
+.creditos-mensagem {
+    border-color: var(--neon-purple);
+    color: var(--neon-purple);
+}
+
+.creditos-instituicao {
+    border-color: var(--neon-teal);
+    color: var(--neon-teal);
+    text-align: center;
+}
+
+/* Estilos de texto */
+.creditos-container h2 {
+    font-size: clamp(1.3rem, 2.5vw, 2rem);
+    margin-bottom: 1.5vw;
+    text-align: center;
+    text-shadow: 
+        0 0 10px currentColor,
+        0 0 20px currentColor;
+}
+
+.creditos-container h3 {
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    margin-bottom: 1vw;
+    text-align: center;
+    text-shadow: 
+        0 0 5px currentColor,
+        0 0 10px currentColor;
+}
+
+.creditos-container p {
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    line-height: 1.6;
+    text-align: justify;
+    color: #ccc;
+    margin-bottom: 1vw;
+}
+
+.creditos-container p:last-child {
+    margin-bottom: 0;
+}
+
+/* Membros da equipe */
+.membros-equipe {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5vw;
+}
+
+.membro {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5vw;
+    padding: 1vw;
+    background: rgba(102, 191, 1, 0.1);
+    border-radius: 0.8vw;
+    border: 1px solid var(--neon-green);
+}
+
+.nome-membro {
+    font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+    font-weight: bold;
+    color: var(--neon-green);
+    text-shadow: 
+        0 0 5px var(--neon-green),
+        0 0 10px var(--neon-green);
+}
+
+.funcao-membro {
+    font-size: clamp(0.9rem, 1.3vw, 1.1rem);
+    color: #aaa;
+    font-style: italic;
+}
+
+/* Mensagens especiais */
+.destaque {
+    font-size: clamp(1.1rem, 1.8vw, 1.4rem) !important;
+    text-align: center !important;
+    font-style: italic;
+    color: var(--neon-purple) !important;
+    text-shadow: 
+        0 0 5px var(--neon-purple),
+        0 0 10px var(--neon-purple);
+    margin: 2vw 0 !important;
+}
+
+.agradecimento-final {
+    font-size: clamp(1.2rem, 2vw, 1.6rem) !important;
+    text-align: center !important;
+    font-weight: bold;
+    color: var(--neon-cyan) !important;
+    text-shadow: 
+        0 0 10px var(--neon-cyan),
+        0 0 20px var(--neon-cyan);
+    margin-top: 2vw !important;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .container {
+        width: 98%;
+        margin: 1% auto;
+        border-width: 0.6vw;
+        border-radius: 3vw;
+    }
+
+    .header {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .pasta {
+        gap: 0.5rem;
+    }
+
+    .pasta-icon {
+        width: 60px;
+    }
+
+    .neon-box {
+        padding: 1rem;
+        border-width: 0.4vw;
+        border-radius: 2vw;
+    }
+
+    .membro {
+        padding: 3vw;
+    }
+
+    .creditos-container p {
+        text-align: left;
+    }
+}
+
+@media (max-width: 480px) {
+    .pasta {
+        gap: 0.3rem;
+    }
+
+    .pasta-icon {
+        width: 50px;
+    }
+
+    .pasta-icon p {
+        font-size: 0.7rem;
+    }
+
+    .neon-box {
+        padding: 0.8rem;
+    }
+
+    .membros-equipe {
+        gap: 3vw;
+    }
+
+    .membro {
+        padding: 4vw;
+    }
+}
+
+/* Melhorias de acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+    .glitch-text::before,
+    .glitch-text::after,
+    .cyberpunk-bg,
+    .logo img,
+    .neon-box::before {
+        animation: none;
+    }
+}
+
+/* Focus visible para acessibilidade */
+.pasta-icon a:focus-visible,
+.neon-box:focus-visible {
+    outline: 2px solid var(--neon-cyan);
+    outline-offset: 2px;
+}
