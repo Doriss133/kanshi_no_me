@@ -3,7 +3,7 @@ const personagens = [
     {
         id: 0,
         nome: "SORA",
-        imagem: "sora.gif",
+        elementoId: "personagem-sora",
         descricao: "Sora é um adolescente híbrido — meio humano, meio ciborgue — vivendo em uma cidade controlada pela IA central ECHO. Desde pequeno ele carrega implantes que o conectam à rede, o que permite que a IA tente se comunicar diretamente com ele, como se quisesse arrastá-lo para dentro do próprio sistema. Para suportar esse peso, ele anda sempre com fones de ouvido, abafando a voz em sua mente e tentando preservar o que ainda é 'seu'.",
         atributos: {
             natureza: "Híbrido Humano-Ciborgue",
@@ -15,7 +15,7 @@ const personagens = [
     {
         id: 1,
         nome: "DAIZEN",
-        imagem: "careca.gif",
+        elementoId: "personagem-daizen",
         descricao: "Antigo colega do pai de Sora, abandonou o projeto antes que tudo saísse do controle. Carrega arrependimento e observa Sora de longe, temendo que o passado esteja prestes a se repetir.",
         atributos: {
             natureza: "Ex-Cientista do Projeto",
@@ -27,7 +27,7 @@ const personagens = [
     {
         id: 2, 
         nome: "KAITO",
-        imagem: "moicano.gif",
+        elementoId: "personagem-kaito",
         descricao: "Antigo amigo de Sora antes do caos. Agora faz parte de pequenos grupos insurgentes. Se afastou por motivos que Sora nunca entendeu, mas nunca deixou de acompanhar seus passos.",
         atributos: {
             natureza: "Insurgente Tecnológico",
@@ -39,7 +39,7 @@ const personagens = [
     {
         id: 3,
         nome: "AIRI",
-        imagem: "mulher.gif", 
+        elementoId: "personagem-airi", 
         descricao: "Trabalhou e morou perto de Sora quando ele era criança. Notou mudanças estranhas no comportamento do pai dele e saiu antes que piorasse. Hoje cuida dele à distância, sem revelar que sabe mais do que demonstra.",
         atributos: {
             natureza: "Protetora Silenciosa",
@@ -51,7 +51,7 @@ const personagens = [
     {
         id: 4,
         nome: "KAEL",
-        imagem: "negao.gif",
+        elementoId: "personagem-kael",
         descricao: "Homem simples que trabalha no posto no centro da cidade. Não conhece a verdade, mas enxerga em Sora algo quebrado e solitário. Representa o último traço de 'vida normal' no cotidiano dele.",
         atributos: {
             natureza: "Trabalhador Comum", 
@@ -63,7 +63,6 @@ const personagens = [
 ];
 
 // Elementos DOM
-const personagemGif = document.getElementById('personagem-gif');
 const personagemNome = document.getElementById('personagem-nome');
 const personagemDescricao = document.getElementById('personagem-descricao');
 const atributoNatureza = document.getElementById('atributo-natureza');
@@ -81,9 +80,16 @@ let personagemAtual = 0;
 function atualizarPersonagemDestaque(index) {
     const personagem = personagens[index];
     
-    // Atualizar elementos visuais
-    personagemGif.src = personagem.imagem;
-    personagemGif.alt = personagem.nome;
+    // Esconder todas as imagens primeiro
+    document.querySelectorAll('.personagem-gif').forEach(img => {
+        img.style.display = 'none';
+    });
+    
+    // Mostrar apenas a imagem do personagem atual
+    const imagemAtual = document.getElementById(personagem.elementoId);
+    imagemAtual.style.display = 'block';
+    
+    // Atualizar textos
     personagemNome.textContent = personagem.nome;
     personagemDescricao.textContent = personagem.descricao;
     
@@ -108,7 +114,7 @@ function atualizarPersonagemDestaque(index) {
 
 // Efeito de transição glitch
 function aplicarEfeitoTransicao() {
-    const elementos = [personagemGif, personagemNome, personagemDescricao];
+    const elementos = document.querySelectorAll('.personagem-gif, #personagem-nome, #personagem-descricao');
     
     elementos.forEach(elemento => {
         elemento.style.animation = 'glitch-1 0.3s ease';
@@ -226,5 +232,7 @@ style.textContent = `
         animation: glitch-1 0.3s ease;
     }
 `;
+document.head.appendChild(style);
 
 document.head.appendChild(style);
+
