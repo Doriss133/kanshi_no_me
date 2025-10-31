@@ -3,7 +3,7 @@ const personagens = [
     {
         id: 0,
         nome: "SORA",
-        imagem: "imagens/sora.gif",
+        imagem: "sora.gif",
         descricao: "Sora é um adolescente híbrido — meio humano, meio ciborgue — vivendo em uma cidade controlada pela IA central ECHO. Desde pequeno ele carrega implantes que o conectam à rede, o que permite que a IA tente se comunicar diretamente com ele, como se quisesse arrastá-lo para dentro do próprio sistema. Para suportar esse peso, ele anda sempre com fones de ouvido, abafando a voz em sua mente e tentando preservar o que ainda é 'seu'.",
         atributos: {
             natureza: "Híbrido Humano-Ciborgue",
@@ -15,7 +15,7 @@ const personagens = [
     {
         id: 1,
         nome: "DAIZEN",
-        imagem: "imagens/careca.gif",
+        imagem: "careca.gif",
         descricao: "Antigo colega do pai de Sora, abandonou o projeto antes que tudo saísse do controle. Carrega arrependimento e observa Sora de longe, temendo que o passado esteja prestes a se repetir.",
         atributos: {
             natureza: "Ex-Cientista do Projeto",
@@ -27,7 +27,7 @@ const personagens = [
     {
         id: 2, 
         nome: "KAITO",
-        imagem: "imagens/moicano.gif",
+        imagem: "moicano.gif",
         descricao: "Antigo amigo de Sora antes do caos. Agora faz parte de pequenos grupos insurgentes. Se afastou por motivos que Sora nunca entendeu, mas nunca deixou de acompanhar seus passos.",
         atributos: {
             natureza: "Insurgente Tecnológico",
@@ -39,7 +39,7 @@ const personagens = [
     {
         id: 3,
         nome: "AIRI",
-        imagem: "imagens/mulher.gif", 
+        imagem: "mulher.gif", 
         descricao: "Trabalhou e morou perto de Sora quando ele era criança. Notou mudanças estranhas no comportamento do pai dele e saiu antes que piorasse. Hoje cuida dele à distância, sem revelar que sabe mais do que demonstra.",
         atributos: {
             natureza: "Protetora Silenciosa",
@@ -51,7 +51,7 @@ const personagens = [
     {
         id: 4,
         nome: "KAEL",
-        imagem: "imagens/negao.gif",
+        imagem: "negao.gif",
         descricao: "Homem simples que trabalha no posto no centro da cidade. Não conhece a verdade, mas enxerga em Sora algo quebrado e solitário. Representa o último traço de 'vida normal' no cotidiano dele.",
         atributos: {
             natureza: "Trabalhador Comum", 
@@ -226,4 +226,5 @@ style.textContent = `
         animation: glitch-1 0.3s ease;
     }
 `;
+
 document.head.appendChild(style);
